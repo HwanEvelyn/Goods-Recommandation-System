@@ -1,0 +1,353 @@
+</html><!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>侧边栏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+ 
+        .sidebar {
+            /* 子绝父相 */
+            position: fixed;
+            width: 1200px;
+            height: 700px;
+            margin: 50px auto;
+            color: #ffffff;
+            margin-left: 10px;
+        }
+ 
+        .sidebar ul {
+            width: 200px;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .3);
+        }
+ 
+        .sidebar ul li {
+            list-style: none;
+            height: 50px;
+            padding: 10px 0;
+            transition: all .5s;
+        }
+ 
+        .sidebar ul li p {
+            float: left;
+            margin-left: 50px;
+        }
+ 
+        .sidebar ul li span {
+            float: right;
+            margin-right: 20px;
+        }
+ 
+        .sidebar ul li:hover {
+            background-color: orange;
+            padding-left: 20px;
+            cursor: pointer;
+        }
+ 
+        .sidebar ul li:hover .sidebar-mask {
+            display: block;
+        }
+ 
+        .content {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            width: 900px;
+            height: 600px;
+            background-color: rgba(0, 0, 0, .3);
+            text-align: center;
+        }
+        
+          /* 主内容区 */
+          /* .content {
+            margin-left: 250px;
+            padding: 20px;
+            width: calc(100% - 250px);
+            height: 100%;
+            overflow-y: auto;
+        } */
+        .page {
+            display: none;
+        }
+
+        /* 显示当前页面内容 */
+        .active {
+            display: block;
+        }
+
+        .user_name {
+        position: relative;
+        width: 400px;
+        height: 200px;
+        /* background-color: yellowgreen; */
+    }
+    .goods_number{
+        position: relative;
+        width: 400px;
+        height: 200px;
+        /* background-color: aqua; */
+    }
+    .user_name{
+        width: 200px;
+        height: 50px;
+        position: absolute;
+        top: 100px;
+        left: 300px;
+        font-size: 20px;
+    }
+    .goods_number{
+        width: 200px;
+        height: 50px;
+        position: absolute;
+        top: 200px;
+        left: 300px;
+        font-size: 20px;
+    }
+    #userName{
+    display: inline-block;
+    width: 300px;
+    height: 30px;
+    color: orange;
+    font-size: 20px;
+    border: 0px transparent;
+    border-bottom: 2px solid #fff;
+    background-color: rgb(54, 54, 54);
+}
+#goodsNumber{
+    display: inline-block;
+    width: 300px;
+    height: 30px;
+    color: orange;
+    font-size: 20px;
+    border: 0px transparent;
+    border-bottom: 2px solid #fff;
+    background-color: rgb(54, 54, 54);
+}
+#userName:focus{
+    outline: none;
+    border-bottom: 2px solid orange;
+}
+#goodsNumber:focus{
+    outline: none;
+    border-bottom: 2px solid orange;
+}
+.userNameTip{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 15px;
+    color: #fff;
+}
+.goodsNumberTip{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 15px;
+    color: #fff;
+}
+@keyframes user {
+    from{
+        top: 0px;
+        font-size: 20px;
+    }
+    to{
+        top: -20px;
+        font-size: 12px;
+        color: white;    
+    }
+}
+@keyframes goods {
+    from{
+        top: 0px;
+        font-size: 20px;
+    }
+    to{
+        top: -20px;
+        font-size: 12px;
+        color: white;    
+    }
+}
+.userNameTipA{
+    animation: user 0.1s linear normal forwards;
+    animation-iteration-count: 1;
+}
+.goodsNumberTipA{
+    animation: user 0.1s linear normal forwards;
+    animation-iteration-count: 1;
+}
+
+    </style>
+</head>
+ 
+<body>
+<div class="sidebar">
+    <ul>
+        <li>
+            <h4 style="text-align: center;">侧边栏</h4>
+        </li>
+        <li onclick="showPage('page1')">
+            <h4 style="text-align: center;">参数设置   ></h4>
+        </li>
+        <li onclick="showPage('page2')">
+            <h4 style="text-align: center;">商品推荐   ></h4>
+        </li>
+        <li onclick="showPage('page3')">
+            <h4 style="text-align: center;">页面 3   ></h4>
+        </li>
+    </ul>
+</div>
+ <!-- 主内容区 -->
+ <div class="content">
+    <div id="page1" class="page active">
+        <h1>参数设置</h1>
+        <div class="user_name">
+            <label for="userName" class="userNameTip">请输入您的用户ID</label>
+            <input type="number" id="userName">
+        </div>
+        <div class="goods_number">
+            <label for="goodsNumber" class="goodsNumberTip">请输入您需要推荐商品的个数</label>
+            <input type="number" id="goodsNumber">
+        </div>
+        <button id="submitBtn" style="margin-top: 250px;width: 50px;height: 30px;">提交</button>
+    </div>
+    <div id="page2" class="page">
+        <h1>商品推荐</h1>
+        <div id="productListContainer">
+        </div>
+    </div>
+    <div id="page3" class="page">
+        <h1>页面 3</h1>
+        <p>这是页面 3 的内容。</p>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+         // 显示对应页面的内容
+         function showPage(pageId) {
+            // 隐藏所有页面内容
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // 显示点击的页面内容
+            const activePage = document.getElementById(pageId);
+            if (activePage) {
+                activePage.classList.add('active');
+            }
+        }
+        $('#userName').focus(function () {
+            $('.userNameTip').addClass('userNameTipA');
+            console.log("点击了");
+        })
+        $('#userName').blur(function () {
+            let val = $('#userName').val();
+            if (val) {
+                return;
+            } else {
+                $('.userNameTip').removeClass('userNameTipA');
+            }
+        });
+        $('#goodsNumber').focus(function () {
+            $('.goodsNumberTip').addClass('goodsNumberTipA');
+            console.log("点击了");
+        })
+        $('#goodsNumber').blur(function () {
+            let val = $('#goodsNumber').val();
+            if (val) {
+                return;
+            } else {
+                $('.goodsNumberTip').removeClass('goodsNumberTipA');
+            }
+        });
+
+        document.getElementById('submitBtn').addEventListener('click', function () {
+             // 获取用户ID和商品个数
+            const userId = document.getElementById("userName").value;
+            const goodsNumber = document.getElementById("goodsNumber").value;
+            // 确保用户ID和商品个数都已填写
+            if (!userId || !goodsNumber) {
+                alert("请填写完整的用户ID和商品个数！");
+                return;
+            }
+            console.log("用户ID:", userId);
+            console.log("商品个数:", goodsNumber);
+            // 创建请求体数据
+            const requestBody = {
+                user_id: parseInt(userId),
+                n: parseInt(goodsNumber)
+            };
+
+            // 发送POST请求
+            fetch("http://localhost:8000/recommend", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(requestBody) // 将数据转换为JSON字符串
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("推荐结果:", data); // 处理响应数据
+                console.log("数据类型:", typeof data);
+                alert("请求成功！");
+                // 获取展示商品列表的容器元素（假设id为productListContainer）
+                const productListContainer = document.getElementById("productListContainer");
+                // 清空容器，防止每次点击都重复添加
+                productListContainer.innerHTML = '';
+
+                const products = data.recommended_items;
+
+                // // 创建 <ul> 元素
+                // const ul = document.createElement('ul');
+
+                // 使用for循环遍历商品列表并生成HTML
+                products.forEach(item => {
+                    // const li = document.createElement('li');
+            
+                    // // 创建商品内容
+                    // li.innerHTML = `
+                    //     <div>
+                    //         <strong>商品ID:</strong> ${products.item_id} <br>
+                    //         <strong>描述:</strong> ${products.title} <br>
+                    //         <strong>图片:</strong> <img src="${products.pict_url}" alt="Product Image" style="width: 100px; height: 100px;">
+                    //     </div>
+                    // `;
+                    
+                    // // 将 <li> 元素添加到 <ul> 中
+                    // ul.appendChild(li);
+
+                    // // 将 <ul> 元素添加到页面中
+                    // productListContainer.appendChild(ul)
+
+                    // 创建商品卡片元素
+                    const productCard = document.createElement('div');
+                    productCard.classList.add('product-card');
+                    
+                    // 构建商品内容
+                    const productContent = `
+                        <img src="${item.pict_url}" alt="${item.title}" class="product-image">
+                        <h3>商品ID: ${item.item_id}</h3>
+                        <p>${item.title}</p>
+                    `;
+
+                    // 将内容添加到商品卡片中
+                    productCard.innerHTML = productContent;
+
+                    // 将商品卡片添加到容器中
+                    productListContainer.appendChild(productCard);
+                });
+            })
+            .catch(error => {
+                console.error("错误:", error); // 处理错误
+                alert("请求失败！");
+            });
+        });
+    </script>
+</body>
+ 
+</html>

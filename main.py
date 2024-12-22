@@ -6,8 +6,24 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.cluster import KMeans
 from sklearn.feature_extraction.text import TfidfVectorizer
 from recommendation import hybrid_recommend  # 引入混合推荐系统函数（你提供的代码）
+from starlette.middleware.cors import CORSMiddleware
+
+# 允许指定的源进行跨域访问
+origins = [
+    "http://127.0.0.1:5500",  # 前端地址
+    "http://localhost:5500",   # 如果前端用的是localhost，也可以添加
+]
 
 app = FastAPI(title="Hybrid Goods Recommendation System API")
+
+# 添加CORS中间件
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # 允许访问的源
+    allow_credentials=True,
+    allow_methods=["*"],    # 允许所有的HTTP方法
+    allow_headers=["*"],    # 允许所有的请求头
+)
 
 # 加载数据
 most_popular = pd.read_excel('./data/most_popular.xlsx')

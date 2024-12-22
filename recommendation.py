@@ -474,12 +474,12 @@ def show_recommendations(user_id=None, item_id=None, vectorizer=vectorizer, kmea
 
 
 # 示例使用
-show_recommendations(
-    user_id=29,
-    item_id=None,
-    product=pd.read_excel('./data/product.xlsx'),
-    n=20
-)
+# show_recommendations(
+#     user_id=29,
+#     item_id=None,
+#     product=pd.read_excel('./data/product.xlsx'),
+#     n=20
+# )
 
 
 # In[ ]:
