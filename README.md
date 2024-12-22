@@ -44,3 +44,8 @@ This is a e-commece system with goods recommdation algorithm.
     - 为每种推荐方法分配一个权重（`weights`），反映其在最终推荐中的重要性。这里设置为协同过滤40%、聚类30%、内容推荐20%、受欢迎度10%。
     - 通过加权累加各推荐方法的推荐结果，生成一个综合评分。
     - 根据综合评分对推荐商品进行排序，选取前N个作为最终推荐结果。
+## 后端部署
+在后端根目录下命令行运行：
+```bash
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
