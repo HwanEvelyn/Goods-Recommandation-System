@@ -18,26 +18,29 @@ This is a e-commece system with goods recommdation algorithm.
 
 ## 实现
 商品数据、用户行为数据：https://tianchi.aliyun.com/dataset/140281
-1. **基于协同过滤的推荐（Collaborative Filtering Recommendation）**
+1. **用户冷启动 / 未登录推荐**
+    - 对商品受欢迎程度进行排序
+    - 获取最受欢迎的商品列表
+2. **基于协同过滤的推荐（Collaborative Filtering Recommendation）**
 
     - 使用奇异值分解（SVD）对商品购买矩阵进行降维。
     - 计算商品之间的余弦相似度。
     - 根据相似度为目标商品推荐最相似的商品。
 
-2. **基于K-means聚类的推荐（Clustering-Based Recommendation）**
+3. **基于K-means聚类的推荐（Clustering-Based Recommendation）**
 
     - 使用TF-IDF向量化商品描述，并通过K-means对商品进行聚类。
     - 为每个商品分配一个簇标签。
     - 基于目标商品所属的簇，推荐同簇内的其他商品。
 
-3. **基于内容的推荐（Content-Based Recommendation）**
+4. **基于内容的推荐（Content-Based Recommendation）**
 
     - 使用TF-IDF和SVD对商品描述进行降维和相似度计算。
     - 根据商品描述的相似度推荐相关商品。
 
-4. **混合推荐系统（Hybrid Recommendation System）**
+5. **混合推荐系统（Hybrid Recommendation System）**
 
-    - 分别调用上述三种推荐方法，获取各自的推荐列表。
-    - 为每种推荐方法分配一个权重（`weights`），反映其在最终推荐中的重要性。这里设置为协同过滤40%、聚类30%、内容推荐30%。
+    - 分别调用上述四种推荐方法，获取各自的推荐列表。
+    - 为每种推荐方法分配一个权重（`weights`），反映其在最终推荐中的重要性。这里设置为协同过滤40%、聚类30%、内容推荐20%、受欢迎度10%。
     - 通过加权累加各推荐方法的推荐结果，生成一个综合评分。
     - 根据综合评分对推荐商品进行排序，选取前N个作为最终推荐结果。
