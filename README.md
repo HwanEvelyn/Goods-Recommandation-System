@@ -45,13 +45,21 @@ This is a e-commece system with goods recommdation algorithm.
     - 通过加权累加各推荐方法的推荐结果，生成一个综合评分。
     - 根据综合评分对推荐商品进行排序，选取前N个作为最终推荐结果。
 ## 后端部署
+
 在后端根目录下命令行运行：
+
 ```bash
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
+
 ## 前端采用VUE框架
-    - 参数设置界面：
+
+- 参数设置界面：
+
 ![屏幕截图 2024-12-23 165706](https://github.com/user-attachments/assets/ae1157aa-ff8c-4bfb-8d42-b000be34c7c7)
 
-    - 推荐商品界面：
+- 推荐商品界面：
+
 ![image](https://github.com/user-attachments/assets/7bfd02af-ad50-4972-a1c3-cbeeb8b14857)
+
+
