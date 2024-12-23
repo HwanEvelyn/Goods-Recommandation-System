@@ -54,4 +54,4 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ![屏幕截图 2024-12-23 165706](https://github.com/user-attachments/assets/ae1157aa-ff8c-4bfb-8d42-b000be34c7c7)
 
     - 推荐商品界面：
-![image](https://githubusercontent.com/user-attachments/assets/7bfd02af-ad50-4972-a1c3-cbeeb8b14857)
+![image](https://github.com/user-attachments/assets/7bfd02af-ad50-4972-a1c3-cbeeb8b14857)
