@@ -10,8 +10,8 @@ from starlette.middleware.cors import CORSMiddleware
 
 # 允许指定的源进行跨域访问
 origins = [
-    "http://127.0.0.1:5500",  # 前端地址
-    "http://localhost:5500",   # 如果前端用的是localhost，也可以添加
+    "http://127.0.0.1:5173",  # 前端地址
+    "http://localhost:5173",   # 如果前端用的是localhost，也可以添加
 ]
 
 app = FastAPI(title="Hybrid Goods Recommendation System API")
