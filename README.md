@@ -60,6 +60,7 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
 - 推荐商品界面：
 
-![image](https://github.com/user-attachments/assets/7bfd02af-ad50-4972-a1c3-cbeeb8b14857)
+![image](https://github.com/user-attachments/assets/3ebb62fc-d08e-427f-bb2c-26b027e831a6)
+
 
 
