@@ -10,9 +10,9 @@ This is a e-commece system with goods recommdation algorithm.
    - 基于商品的协同过滤
 
 3. 三个表：goods、user、userBehavior
-30个user、500个商品、300条购买记录
-   - 商品数据、用户行为数据：https://tianchi.aliyun.com/dataset/140281
-   - 用户数据、用户行为数据随机生成
+200个user、562个商品、4844条购买记录
+   - 商品数据、用户行为数据来源：https://tianchi.aliyun.com/dataset/140281
+   - 用户行为数据：用户ID在1到200之间，均值100，标准差25、商品ID在1到562之间，均值281，标准差150
 
 4. 完整的推荐流程包括召回和排序。召回是指从海量的待推荐候选集中，选取待推荐列表。排序是指对待推荐列表的每个Item与User的关联程度进行排序。
 
