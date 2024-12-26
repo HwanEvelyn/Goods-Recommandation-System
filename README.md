@@ -56,7 +56,7 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
 - 参数设置界面：
 
-![屏幕截图 2024-12-23 165706](https://github.com/user-attachments/assets/ae1157aa-ff8c-4bfb-8d42-b000be34c7c7)
+![image](https://github.com/user-attachments/assets/a9c1677d-3f2b-453e-8b8e-89e3468ff21d)
 
 - 推荐商品界面：
 
