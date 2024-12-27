@@ -51,7 +51,7 @@ This is a e-commece system with goods recommdation algorithm.
 ```bash
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
-查看自动生成的 API 文档http://localhost:8000/docs
+运行后查看自动生成的 API 文档http://localhost:8000/docs
 
 ## 前端采用VUE框架
 
