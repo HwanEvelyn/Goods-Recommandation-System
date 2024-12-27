@@ -1,12 +1,12 @@
 <template>
     <div id="page1" class="page active">
-        <h1 style="margin-left: 28px;">参数设置</h1>
+        <h1 style="position: absolute;top: 30px;">参数设置</h1>
         <div class="user_name">
             <label 
                 :class="['userNameTip', userNameTipClass]" 
                 for="userName"
             >
-                请输入您的用户ID
+                请输入您的用户ID(最高200)
             </label>
             <input 
                 type="number" 
@@ -14,6 +14,7 @@
                 v-model="userName" 
                 @focus="handleUserNameFocus" 
                 @blur="handleUserNameBlur"
+                style="border-radius: 10px;height: 45px;"
             >
         </div>
         <div class="goods_number">
@@ -21,17 +22,18 @@
                 :class="['goodsNumberTip', goodsNumberTipClass]" 
                 for="goodsNumber"
             >
-                请输入您需要推荐商品的个数
+                请输入您需要推荐商品的个数(最高100)
             </label>
             <input 
-                type="number" 
+                type="number"
                 id="goodsNumber" 
                 v-model="goodsNumber" 
                 @focus="handleGoodsNumberFocus" 
                 @blur="handleGoodsNumberBlur"
+                style="border-radius: 10px;height: 45px;"
             >
         </div>
-        <button id="submitBtn" @click="handleClick" style=" z-index: 10;margin-top: 250px;margin-left: 100px; width: 50px;height: 30px;">提交</button>
+        <button id="submitBtn" @click="handleClick" style=" z-index: 10;margin-top: 30px;margin-left: 0px; width: 100px;height: 50px;">提交</button>
     </div>
 </template>
 
@@ -101,29 +103,40 @@ export default {
 <style>
     .page{
         /* background-color: yellow; */
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
     .user_name {
-        position: relative;
+        position: absolute;
+        top: 200px;
         width: 400px;
-        height: 200px;
+        height: 50px;
         /* background-color: yellowgreen; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .goods_number{
-        position: relative;
+        /* margin-top: 50px; */
+        position: absolute;
+        top: 300px;
         width: 400px;
-        height: 200px;
+        height: 50px;
         /* background-color: aqua; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-    .user_name{
+    /* .user_name{
         width: 200px;
         height: 50px;
         position: absolute;
         top: 200px;
-        left: 800px;
+        left: 760px;
         font-size: 20px;
     }
     .goods_number{
@@ -131,9 +144,9 @@ export default {
         height: 50px;
         position: absolute;
         top: 300px;
-        left: 800px;
+        left: 760px;
         font-size: 20px;
-    }
+    } */
     #userName{
         display: inline-block;
         width: 300px;
@@ -162,18 +175,17 @@ export default {
         outline: none;
         border-bottom: 2px solid orange;
     }
-    .userNameTip{
-        position: absolute;
-        top: 0px;
-        left: 0px;
+    .userNameTip{        position: absolute;
+        top: 13px;
+        left: 55px;
         font-size: 15px;
         color: #fff;
         transition: all 0.1s linear;
     }
     .goodsNumberTip{
         position: absolute;
-        top: 0px;
-        left: 0px;
+        top: 13px;
+        left: 55px;
         font-size: 15px;
         color: #fff;
         transition: all 0.1s linear;
@@ -186,7 +198,7 @@ export default {
         to{
             top: -20px;
             font-size: 12px;
-            color: white;    
+            color: rgba(0, 0, 0, .9);    
         }
     }
     @keyframes goods {
@@ -197,7 +209,7 @@ export default {
         to{
             top: -20px;
             font-size: 12px;
-            color: white;    
+            color: rgba(0, 0, 0, .9);    
         }
     }
     .userNameTipA{

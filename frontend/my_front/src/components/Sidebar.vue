@@ -62,7 +62,7 @@
                     <p>商品推荐</p>
                     <span>></span>
                 </li>
-                <li @click="handleClick('page3')">
+                <li @click="handleClick('History')">
                     <p>用户购买记录</p>
                     <span>></span>
 

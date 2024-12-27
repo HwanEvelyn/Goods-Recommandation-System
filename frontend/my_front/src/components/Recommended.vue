@@ -1,6 +1,6 @@
 <template>
      <div class="recommended-items">
-    <h2>推荐商品</h2>
+    <h2 style="margin-top: 10px;height: 50px;">推荐商品</h2>
     <div v-if="RecommendedList.length > 0" class="items-list">
       <div v-for="item in RecommendedList" :key="item.item_id" class="item">
         <img :src="item.pict_url" :alt="item.title" class="item-image" />
@@ -15,6 +15,9 @@
     .recommended-items {
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* background-color: rgba(0, 0, 0, .3); */
     }
     .items-list {
         display: flex;
@@ -24,12 +27,15 @@
     .item{
         display: flex;
         padding: 10px;
+        width: 100%;
+
+        border: 1px solid #7c7979;
     }
     .item-image{
         width: 100px;
         height: 100px;
         border-radius: 15px;
-        border: 2px solid #ccc;
+        border: 2px solid #7c7979;
     }
     .item-title{
         margin-left: 50px;
@@ -37,8 +43,9 @@
         width: 50%;
     }
     .item-id{
-        margin-left: 50px;
-        margin-top: 20px;
+        position: absolute;
+        margin-top: 30px;
+        left: 1300px;
     }
 </style>
 

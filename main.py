@@ -29,6 +29,7 @@ app.add_middleware(
 most_popular = pd.read_excel('./data/most_popular.xlsx')
 purchase_matrix = pd.read_excel('./data/purchase_matrix.xlsx', index_col='user_id')
 product = pd.read_excel('./data/product.xlsx')
+log = pd.read_excel('./data/processed_log.xlsx')
 
 # 商品描述数据处理
 product_descriptions = product[['item_id', 'title']].copy()
@@ -59,6 +60,11 @@ class RecommendRequest(BaseModel):
 class RecommendResponse(BaseModel):
     recommended_items: list  # 推荐的商品列表
 
+class PurchaseHistoryRequest(BaseModel):
+    user_id: int  # 用户ID
+
+class PurchaseHistoryResponse(BaseModel):
+    purchased_items: list  # 用户购买的商品列表
 @app.post("/recommend", response_model=RecommendResponse)
 def recommend(request: RecommendRequest):
     """
@@ -92,6 +98,35 @@ def recommend(request: RecommendRequest):
     recommended_list = recommended_products.to_dict(orient="records")
 
     return RecommendResponse(recommended_items=recommended_list)
+
+@app.post("/history", response_model=PurchaseHistoryResponse)
+def purchase_history(request: PurchaseHistoryRequest):
+    """
+    根据用户ID获取历史购物商品，包括商品的标题、图片URL、item_id和购买次数。
+    参数：
+        user_id: 用户ID
+    返回：
+        用户历史购买的商品列表
+    """
+    user_id = request.user_id
+
+    # 根据用户ID从日志数据中筛选该用户的购买记录
+    user_purchase_log = log[log['user_id'] == user_id]
+
+    # 如果该用户没有购买记录，返回空列表
+    if user_purchase_log.empty:
+        raise HTTPException(status_code=200, detail="该用户没有历史购买记录")
+
+    # 统计每个商品的购买次数
+    purchase_counts = user_purchase_log.groupby('item_id').size().reset_index(name='count')
+
+    # 合并商品详情（title, pict_url）
+    purchase_details = purchase_counts.merge(product[['item_id', 'title', 'pict_url']], on='item_id', how='left')
+
+    # 转换为字典格式
+    purchased_items = purchase_details.to_dict(orient="records")
+
+    return PurchaseHistoryResponse(purchased_items=purchased_items)
 
 
 # 根路径访问

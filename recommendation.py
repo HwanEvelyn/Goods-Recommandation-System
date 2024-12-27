@@ -162,7 +162,6 @@ product = pd.read_excel('./data/product.xlsx')
 product_descriptions = product[['item_id','title']].copy()
 product_descriptions.head()
 
-
 # ## 基于协同过滤的推荐
 # 使用奇异值分解（SVD）对购买矩阵进行降维，并计算商品之间的相似度以进行推荐。
 # 
@@ -347,17 +346,17 @@ def hybrid_recommend(user_id=None, item_id=None, purchase_matrix=None, product=N
          # 如果提供了item_id（即针对特定商品的推荐）
         if item_id is not None:
             # 基于协同过滤的推荐
-            cf_recommend = collaborative_filtering_recommend(item_id, purchase_matrix, n_recommend=50)
+            cf_recommend = collaborative_filtering_recommend(item_id, purchase_matrix, n_recommend=100)
             for item in cf_recommend:
                 scores[item] = scores.get(item, 0) + weights[0]
             
             # 基于聚类的推荐
-            cl_recommend = clustering_recommend(item_id, product, kmeans_model, n_recommend=50)
+            cl_recommend = clustering_recommend(item_id, product, kmeans_model, n_recommend=100)
             for item in cl_recommend:
                 scores[item] = scores.get(item, 0) + weights[1]
             
             # 基于内容的推荐
-            cb_recommend = content_based_recommend(item_id, product, vectorizer, svd_model, n_recommend=50)
+            cb_recommend = content_based_recommend(item_id, product, vectorizer, svd_model, n_recommend=100)
             for item in cb_recommend:
                 scores[item] = scores.get(item, 0) + weights[2]
         
@@ -369,7 +368,7 @@ def hybrid_recommend(user_id=None, item_id=None, purchase_matrix=None, product=N
                 user_based_recommend = popularity_based_recommend(n_recommend=n_recommend)
             else:
                 # 基于用户的协同过滤推荐（例如基于用户历史购买的商品推荐）
-                user_based_recommend = collaborative_filtering_recommend_user_based(user_id=user_id, purchase_matrix=purchase_matrix, n_recommend=50)
+                user_based_recommend = collaborative_filtering_recommend_user_based(user_id=user_id, purchase_matrix=purchase_matrix, n_recommend=100)
             
             for item in user_based_recommend:
                 scores[item] = scores.get(item, 0) + weights[0]
