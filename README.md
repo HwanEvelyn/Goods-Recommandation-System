@@ -55,12 +55,17 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ## 前端采用VUE框架
 
 - 参数设置界面：
-
-![image](https://github.com/user-attachments/assets/a9c1677d-3f2b-453e-8b8e-89e3468ff21d)
+  
+![屏幕截图 2024-12-27 113729](https://github.com/user-attachments/assets/974149a3-de17-445c-ba59-747038d68324)
 
 - 推荐商品界面：
 
-![image](https://github.com/user-attachments/assets/3ebb62fc-d08e-427f-bb2c-26b027e831a6)
+![屏幕截图 2024-12-27 113742](https://github.com/user-attachments/assets/f5e7f4d1-f673-4f3d-a5d0-68684eec30f6)
+
+- 用户购买记录界面：
+
+![屏幕截图 2024-12-27 113747](https://github.com/user-attachments/assets/e71e09fe-1aa5-4b03-9e25-d05d2c7f8d93)
+
 
 
 
